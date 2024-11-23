@@ -1,0 +1,17 @@
+<div class="column">
+  <h2>{{ title }}</h2>
+  <div class="task-list">
+    <!-- Passez le nom de la colonne à chaque carte -->
+    <app-task-card *ngFor="let task of tasks" [task]="task" [columnName]="title"></app-task-card>
+    
+    <button *ngIf="!isAddingCard" mat-stroked-button color="primary" class="add-card-button" (click)="showAddCard()">+ Add a card</button>
+    
+    <div *ngIf="isAddingCard" class="add-card-form">
+      <textarea [(ngModel)]="newCardTitle" class="card-input" placeholder="Saisissez un titre ou copiez un lien"></textarea>
+      <div class="button-container">
+        <button mat-button color="primary" (click)="addCard()">Ajouter une carte</button>
+        <button mat-button (click)="cancelAddCard()">X</button>
+      </div>
+    </div>
+  </div>
+</div>

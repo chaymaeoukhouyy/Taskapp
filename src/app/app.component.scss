@@ -1,0 +1,12 @@
+.board-container {
+    margin: 20px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+  

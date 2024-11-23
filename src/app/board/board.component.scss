@@ -1,0 +1,11 @@
+.board-container {
+    display: flex;
+    gap: 20px;
+    padding: 70px;
+ 
+    
+    margin-top: -20px;
+    overflow-x: auto; // Permet de faire défiler horizontalement si les colonnes sont trop nombreuses
+    background-color: #ffffff; // Ajoute un fond léger pour un meilleur contraste
+  }
+  

@@ -1,0 +1,59 @@
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fafafa; /* Couleur de fond douce */
+    border-radius: 12px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    max-width: 400px; /* Largeur maximale de la boîte de dialogue */
+
+  }
+  
+  .dialog-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Century Gothic', Arial, sans-serif;
+}
+  
+  .dialog-subtitle {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .column-select {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Century Gothic', Arial, sans-serif;
+
+  }
+  
+  button {
+    &.mat-stroked-button {
+      font-weight: bold;
+      color: #1976d2;
+      border: 1px solid #1976d2;
+      &:hover {
+        background-color: #e3f2fd; /* Couleur douce au survol */
+      }
+    }
+  
+    &.mat-button {
+      color: #d32f2f; /* Rouge doux pour le bouton annuler */
+      &:hover {
+        background-color: #ffebee; /* Couleur douce au survol */
+      }
+    }
+  }
+  

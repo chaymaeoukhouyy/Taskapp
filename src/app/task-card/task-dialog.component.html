@@ -1,0 +1,23 @@
+<div class="dialog-container">
+  <h2 *ngIf="!data.onlyDescription">{{ data.task.title }}</h2>
+  <p *ngIf="!data.onlyDescription">dans la liste : {{ data.columnName }}</p>
+
+  <div class="dialog-section">
+    <h5>Description</h5>
+    <!-- Affichage en lecture seule si `onlyDescription` est vrai -->
+    <div *ngIf="data.onlyDescription" class="description-text">
+      {{ description }}
+    </div>
+
+    <!-- Affichage en mode édition sinon -->
+    <mat-form-field appearance="fill" class="description-field" *ngIf="!data.onlyDescription">
+      <textarea matInput [(ngModel)]="description" placeholder="Entrez la description de la tâche" rows="5"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="dialog-actions">
+    <!-- Bouton de sauvegarde uniquement si nous ne sommes pas en mode "lecture seule" -->
+    <button mat-button color="primary" *ngIf="!data.onlyDescription" (click)="saveChanges()">Sauvegarder</button>
+    <button mat-button (click)="closeDialog()">Fermer</button>
+  </div>
+</div>

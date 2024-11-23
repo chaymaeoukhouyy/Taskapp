@@ -1,0 +1,28 @@
+mat-toolbar {
+  background: linear-gradient(to right, #3f51b5, #70addf);
+  color: white;
+  display: flex;
+  justify-content: space-between;  // Sépare les éléments pour aligner le titre à gauche et les liens à droite
+  align-items: center;             // Aligne verticalement les éléments au centre
+  padding: 0 20px;                 // Ajoute un padding horizontal pour un meilleur espacement
+  font-family: 'Century Gothic', Arial, sans-serif;
+}
+
+.nav-title {
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;                       // Espacement entre les liens
+}
+
+button {
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'Century Gothic', Arial, sans-serif;
+
+  &:hover {
+    background-color: rgba(247, 245, 245, 0.1);
+  }
+}

@@ -1,0 +1,39 @@
+<mat-card class="task-card">
+  <mat-card-header>
+    <div mat-card-avatar class="task-avatar"></div>
+    <div class="header-content">
+      <mat-card-title>{{ task.title }}</mat-card-title>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="editMenu" class="edit-icon">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <mat-menu #editMenu="matMenu">
+      <button mat-menu-item (click)="openCard()">
+        <mat-icon>open_in_new</mat-icon>
+        <span>Ouvrir la carte</span>
+      </button>
+      <button mat-menu-item (click)="modifyDates()">
+        <mat-icon>calendar_today</mat-icon>
+        <span>Modifier les dates</span>
+      </button>
+      <button mat-menu-item (click)="moveCard()">
+        <mat-icon>arrow_forward</mat-icon>
+        <span>Déplacer</span>
+      </button>
+      <button mat-menu-item (click)="deleteCard()">
+        <mat-icon>delete</mat-icon>
+        <span>Supprimer</span>
+      </button>
+    </mat-menu>
+  </mat-card-header>
+
+  <!-- Icône de description uniquement si une description est présente et non vide -->
+  <mat-card-content>
+    <div *ngIf="task.description && task.description.trim() !== ''" class="description-icon-container">
+      <mat-icon class="description-icon" matTooltip="Cette carte comporte une description" (click)="openDescription()">
+        notes
+      </mat-icon>
+     
+    </div>
+  </mat-card-content>
+</mat-card>
