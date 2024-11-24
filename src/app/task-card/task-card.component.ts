@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from '../models/task.model';
+import { MoveCardDialogComponent } from '../move-card-dialog/move-card-dialog.component';
 import { TaskDialogComponent } from '../task-card/task-dialog.component';
-import { MoveCardDialogComponent } from '../move-card-dialog/move-card-dialog.component'; // Importer le composant de déplacement
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,59 +29,21 @@ import { MatDialogModule } from '@angular/material/dialog';
 export class TaskCardComponent {
   @Input() task!: Task;
   @Input() columnName!: string;
-  @Input() availableColumns: string[] = ["To Do", "In Progress", "Review", "Done"]; // Colonnes disponibles
+  @Input() availableColumns: string[] = ["To Do", "In Progress", "Review", "Done"];
   @Output() deleteTask = new EventEmitter<Task>();
-  @Output() moveTask = new EventEmitter<{ task: Task, newColumn: string }>(); // Événement pour notifier le déplacement
+  @Output() moveTask = new EventEmitter<{ task: Task, newColumn: string }>();
 
   constructor(private dialog: MatDialog) {}
 
   openCard() {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '600px',
-      data: { 
-        task: this.task,
-        columnName: this.columnName,
-      },
+      data: { task: this.task, columnName: this.columnName },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
+      if (result && result.description) {
         this.task.description = result.description;
-
-        if (this.task.description && this.task.description.trim() !== '') {
-          console.log('Description mise à jour:', this.task.description);
-        } else {
-          console.log('Pas de description ajoutée.');
-        }
-      }
-    });
-  }
-
-  openDescription() {
-    this.dialog.open(TaskDialogComponent, {
-      width: '400px',
-      data: { 
-        task: this.task,
-        columnName: this.columnName,
-        onlyDescription: true,
-      },
-    });
-  }
-
-  editDescription() {
-    const dialogRef = this.dialog.open(TaskDialogComponent, {
-      width: '600px',
-      data: { 
-        task: this.task,
-        columnName: this.columnName,
-        onlyDescription: false,
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result && result.description !== undefined) {
-        this.task.description = result.description;
-        console.log('Description modifiée:', this.task.description);
       }
     });
   }
@@ -103,13 +65,8 @@ export class TaskCardComponent {
 }
 
 
-
-  modifyDates() {
-    console.log('Modify dates clicked', this.task);
-  }
-
   deleteCard() {
-    console.log('Delete card clicked', this.task);
+    console.log('Suppression de la tâche :', this.task);
     this.deleteTask.emit(this.task);
   }
 }

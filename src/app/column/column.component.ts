@@ -59,4 +59,12 @@ export class ColumnComponent {
     this.moveTaskToBoard.emit(event);
     console.log(`Déplacer la tâche "${event.task.title}" vers la colonne "${event.newColumn}"`);
   }
+  deleteTask(task: Task) {
+    const index = this.tasks.indexOf(task);
+    if (index > -1) {
+      this.tasks.splice(index, 1);  // Supprime la tâche de la liste des tâches
+      console.log(`Tâche "${task.title}" supprimée de la colonne "${this.title}"`);
+    }
+  }
+  
 }

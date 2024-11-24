@@ -7,7 +7,8 @@
       [task]="task" 
       [columnName]="title"
       [availableColumns]="['To Do', 'In Progress', 'Review', 'Done']"
-      (moveTask)="moveTask($event)">
+      (moveTask)="moveTask($event)"
+      (deleteTask)="deleteTask($event)">  <!-- Corrigez la syntaxe ici -->
     </app-task-card>
 
     <!-- Bouton pour ajouter une nouvelle carte -->

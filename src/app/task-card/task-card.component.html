@@ -12,10 +12,6 @@
         <mat-icon>open_in_new</mat-icon>
         <span>Ouvrir la carte</span>
       </button>
-      <button mat-menu-item (click)="modifyDates()">
-        <mat-icon>calendar_today</mat-icon>
-        <span>Modifier les dates</span>
-      </button>
       <button mat-menu-item (click)="moveCard()">
         <mat-icon>arrow_forward</mat-icon>
         <span>Déplacer</span>
@@ -26,14 +22,4 @@
       </button>
     </mat-menu>
   </mat-card-header>
-
-  <!-- Icône de description uniquement si une description est présente et non vide -->
-  <mat-card-content>
-    <div *ngIf="task.description && task.description.trim() !== ''" class="description-icon-container">
-      <mat-icon class="description-icon" matTooltip="Cette carte comporte une description" (click)="openDescription()">
-        notes
-      </mat-icon>
-     
-    </div>
-  </mat-card-content>
 </mat-card>
