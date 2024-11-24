@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskCardComponent } from '../task-card/task-card.component';
 import { Task } from '../models/task.model';
@@ -12,38 +12,42 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    TaskCardComponent
+    TaskCardComponent,
   ]
 })
 export class ColumnComponent {
   @Input() title!: string;
   @Input() tasks!: Task[];
+  @Output() moveTaskToBoard = new EventEmitter<{ task: Task, newColumn: string }>(); // Pour relayer vers BoardComponent
 
   isAddingCard: boolean = false;
   newCardTitle: string = '';
 
+  // Fonction pour montrer l'interface d'ajout de nouvelle carte
   showAddCard() {
     this.isAddingCard = true;
   }
 
+  // Fonction pour annuler l'ajout de nouvelle carte
   cancelAddCard() {
     this.isAddingCard = false;
     this.newCardTitle = '';
   }
 
+  // Fonction pour ajouter une nouvelle tâche à la colonne
   addCard() {
     if (this.newCardTitle.trim() !== '') {
       const newTask: Task = {
         title: this.newCardTitle,
-        // Notez qu'on n'ajoute pas `description`, elle sera donc undefined par défaut
-        dueDate: new Date() // Ajustez cette logique si nécessaire
+        dueDate: new Date() // Ajoutez une date d'échéance par défaut
       };
       this.tasks.push(newTask);
       this.newCardTitle = '';
       this.isAddingCard = false;
     }
   }
-  // Nouvelle méthode pour gérer le déplacement d'une carte vers une autre colonne
+
+  // Fonction pour relayer l'événement de déplacement de tâche
   moveTask(event: { task: Task, newColumn: string }) {
     // Retirer la tâche de la colonne actuelle
     const taskIndex = this.tasks.indexOf(event.task);
@@ -51,8 +55,8 @@ export class ColumnComponent {
       this.tasks.splice(taskIndex, 1);
     }
 
-    // Logique pour déplacer la tâche vers une nouvelle colonne
-    // Vous pouvez émettre un événement au niveau du composant parent (par exemple, BoardComponent)
+    // Émettre un événement vers BoardComponent pour déplacer la tâche
+    this.moveTaskToBoard.emit(event);
     console.log(`Déplacer la tâche "${event.task.title}" vers la colonne "${event.newColumn}"`);
   }
 }

@@ -1,16 +1,24 @@
 <div class="column">
   <h2>{{ title }}</h2>
   <div class="task-list">
-    <!-- Passez le nom de la colonne à chaque carte -->
-    <app-task-card *ngFor="let task of tasks" [task]="task" [columnName]="title"></app-task-card>
-    
-    <button *ngIf="!isAddingCard" mat-stroked-button color="primary" class="add-card-button" (click)="showAddCard()">+ Add a card</button>
-    
+    <!-- Affichage des cartes de tâches -->
+    <app-task-card 
+      *ngFor="let task of tasks" 
+      [task]="task" 
+      [columnName]="title"
+      [availableColumns]="['To Do', 'In Progress', 'Review', 'Done']"
+      (moveTask)="moveTask($event)">
+    </app-task-card>
+
+    <!-- Bouton pour ajouter une nouvelle carte -->
+    <button *ngIf="!isAddingCard" mat-stroked-button color="primary" class="add-card-button" (click)="showAddCard()">+ Ajouter une carte</button>
+
+    <!-- Formulaire pour ajouter une nouvelle carte -->
     <div *ngIf="isAddingCard" class="add-card-form">
-      <textarea [(ngModel)]="newCardTitle" class="card-input" placeholder="Saisissez un titre ou copiez un lien"></textarea>
+      <textarea [(ngModel)]="newCardTitle" class="card-input" placeholder="Entrez un titre pour cette tâche"></textarea>
       <div class="button-container">
-        <button mat-button color="primary" (click)="addCard()">Ajouter une carte</button>
-        <button mat-button (click)="cancelAddCard()">X</button>
+        <button mat-button color="primary" (click)="addCard()">Ajouter</button>
+        <button mat-button (click)="cancelAddCard()">Annuler</button>
       </div>
     </div>
   </div>

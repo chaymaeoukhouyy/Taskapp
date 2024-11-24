@@ -90,17 +90,19 @@ export class TaskCardComponent {
     const dialogRef = this.dialog.open(MoveCardDialogComponent, {
       width: '400px',
       data: {
-        availableColumns: this.availableColumns,
+        availableColumns: this.availableColumns.filter(col => col !== this.columnName),
       },
     });
 
     dialogRef.afterClosed().subscribe((selectedColumn) => {
       if (selectedColumn) {
+        // Émettre l'événement pour informer le composant parent de déplacer la tâche
         this.moveTask.emit({ task: this.task, newColumn: selectedColumn });
-        console.log('Carte déplacée vers:', selectedColumn);
       }
     });
-  }
+}
+
+
 
   modifyDates() {
     console.log('Modify dates clicked', this.task);
