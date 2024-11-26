@@ -1,0 +1,46 @@
+<div class="sign-up-container">
+    <!-- Section gauche avec l'illustration -->
+    <div class="left-section">
+      <img src="https://img.freepik.com/vecteurs-libre/prise-rendez-vous-illustree-smartphone_52683-38829.jpg?t=st=1732476915~exp=1732480515~hmac=f4d376628358cb8caf74bb136cb0df26cc92626cf395cc975a61c96b6d4ad38c&w=740" alt="Login Illustration" class="login-illustration">
+    </div>
+  
+    <!-- Section droite avec le formulaire d'inscription -->
+    <div class="right-section">
+      <div class="form-container">
+        <h2>Welcome !</h2>
+        <p>Create your Account</p>
+        
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" formControlName="email">
+            <mat-error *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
+              Invalid email address.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
+              Password is required (minimum 6 characters).
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword">
+            <mat-error *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched">
+              Confirmation is required.
+            </mat-error>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" class="sign-up-button" type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+          <button mat-flat-button color="accent" class="sign-in-button" routerLink="/login">Sign In</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+  

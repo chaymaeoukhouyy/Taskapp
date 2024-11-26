@@ -1,0 +1,37 @@
+<div class="login-container">
+    <!-- Section gauche avec l'illustration -->
+    <div class="left-section">
+      <img src="https://img.freepik.com/vecteurs-libre/prise-rendez-vous-illustree-smartphone_52683-38829.jpg?t=st=1732476915~exp=1732480515~hmac=f4d376628358cb8caf74bb136cb0df26cc92626cf395cc975a61c96b6d4ad38c&w=740" alt="Login Illustration" class="login-illustration">
+    </div>
+  
+    <!-- Section droite avec le formulaire de connexion -->
+    <div class="right-section">
+      <div class="form-container">
+        <h2>Welcome !</h2>
+        <p>Sign in to your Account</p>
+        
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" formControlName="email">
+            <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+              Invalid email address.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              Password is required (minimum 6 characters).
+            </mat-error>
+          </mat-form-field>
+  
+          <a class="forgot-password" (click)="goToResetPassword()">Forgot Password</a>
+          
+          <button mat-raised-button color="primary" class="login-button" type="submit">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

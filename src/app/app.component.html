@@ -1,4 +1,5 @@
-<app-navbar></app-navbar>  <!-- Inclure le Navbar en haut de la page -->
-<div class="board-container">
-  <app-board></app-board>
+<app-navbar *ngIf="showNavbar"></app-navbar>
+
+<div class="content-container">
+  <router-outlet></router-outlet> <!-- C'est ici que le contenu des routes sera rendu -->
 </div>

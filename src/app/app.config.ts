@@ -3,28 +3,31 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+import { RouterModule } from '@angular/router';
+
 // Import des modules Angular Material nécessaires
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
-// Import du module FormsModule pour que `ngModel` fonctionne
-import { FormsModule } from '@angular/forms';
-
-// Import des composants de votre application
-import { BoardComponent } from './board/board.component';
-import { ColumnComponent } from './column/column.component';
-import { TaskCardComponent } from './task-card/task-card.component';
+// Import des modules de formulaires
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),         // Fournit les routes de l'application
-    provideAnimations(),           // Fournit les animations d'Angular
-
-    // Utiliser `importProvidersFrom()` pour importer les modules nécessaires
+    provideRouter(routes),
+    provideAnimations(),
     importProvidersFrom(
-      MatCardModule,      // Fournit <mat-card> et ses sous-composants à l'application
-      DragDropModule,     // Fournit les fonctionnalités de drag-and-drop
-      FormsModule         // Ajoutez FormsModule ici pour activer `ngModel`
+      RouterModule,
+      MatCardModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatButtonModule,
+      DragDropModule,
+      FormsModule,
+      ReactiveFormsModule
     ),
   ],
 };
