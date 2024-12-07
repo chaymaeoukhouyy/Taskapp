@@ -4,6 +4,15 @@
     <div class="header-content">
       <mat-card-title>{{ task.title }}</mat-card-title>
     </div>
+
+    <!-- Icône de description à gauche -->
+    <div *ngIf="task.description" class="description-icon-container">
+      <button mat-icon-button (click)="viewDescription()" class="description-icon" matTooltip="Voir la description">
+        <mat-icon>description</mat-icon> <!-- L'icône de description -->
+      </button>
+    </div>
+
+    <!-- Menu de modification de la carte -->
     <button mat-icon-button [matMenuTriggerFor]="editMenu" class="edit-icon">
       <mat-icon>edit</mat-icon>
     </button>

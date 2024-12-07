@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Task } from '../models/task.model';  // Assure-toi que Task est correctement importé
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,7 +22,7 @@ export class TaskDialogComponent {
   description: string = '';
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { task: any, columnName: string, onlyDescription?: boolean },
+    @Inject(MAT_DIALOG_DATA) public data: { task: Task, columnName: string, onlyDescription?: boolean },
     public dialogRef: MatDialogRef<TaskDialogComponent>
   ) {
     if (data.task.description) {
@@ -29,10 +30,12 @@ export class TaskDialogComponent {
     }
   }
 
+  // Sauvegarder la description après modification
   saveChanges(): void {
     this.dialogRef.close({ description: this.description });
   }
 
+  // Fermer la boîte de dialogue sans modifier
   closeDialog(): void {
     this.dialogRef.close();
   }

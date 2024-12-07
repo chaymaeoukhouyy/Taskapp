@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from '../models/task.model';
 import { MoveCardDialogComponent } from '../move-card-dialog/move-card-dialog.component';
-import { TaskDialogComponent } from '../task-card/task-dialog.component';
+import { TaskDialogComponent } from '../task-card/task-dialog.component';  // Assure-toi que le chemin est correct
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -35,6 +35,15 @@ export class TaskCardComponent {
 
   constructor(private dialog: MatDialog) {}
 
+  // Ouvre le dialog pour afficher la description
+  viewDescription(): void {
+    this.dialog.open(TaskDialogComponent, {
+      width: '600px',
+      data: { task: this.task, columnName: this.columnName, onlyDescription: true }
+    });
+  }
+
+  // Ouvre la carte pour modification
   openCard() {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '600px',
@@ -48,6 +57,7 @@ export class TaskCardComponent {
     });
   }
 
+  // Déplace la carte
   moveCard() {
     const dialogRef = this.dialog.open(MoveCardDialogComponent, {
       width: '400px',
@@ -58,13 +68,13 @@ export class TaskCardComponent {
 
     dialogRef.afterClosed().subscribe((selectedColumn) => {
       if (selectedColumn) {
-        // Émettre l'événement pour informer le composant parent de déplacer la tâche
+        // Émettre l'événement pour déplacer la tâche
         this.moveTask.emit({ task: this.task, newColumn: selectedColumn });
       }
     });
-}
+  }
 
-
+  // Supprimer la carte
   deleteCard() {
     console.log('Suppression de la tâche :', this.task);
     this.deleteTask.emit(this.task);

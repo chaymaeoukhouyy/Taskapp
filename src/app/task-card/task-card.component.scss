@@ -15,7 +15,6 @@
   .header-content {
     display: flex;
     align-items: center;
-
     mat-card-title {
       font-weight: 600;
       color: #333;
@@ -41,16 +40,19 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 10px;
-    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    left: 10px; /* Positionner à gauche */
+    top: 1px; /* Positionner en haut à gauche */
+    z-index: 1; /* Placer au-dessus du titre de la carte */
+    cursor: pointer;
 
     .description-icon {
-      color: #616161;
-      font-size: 20px;
-      cursor: pointer;
+      color: #99a7b3;
+      font-size: 10px; /* Taille de l'icône */
+      transition: color 0.3s ease;
 
       &:hover {
-        color: #424242;
+        color: #424242; /* Changer la couleur au survol */
       }
     }
   }
