@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Créer un projet</h2>
+<mat-dialog-content>
+  <mat-form-field  class="form-field">
+    <mat-label>Titre du projet</mat-label>
+    <input matInput [(ngModel)]="projectTitle"  />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Visibilité</mat-label>
+    <mat-select [(ngModel)]="visibility">
+      <mat-option value="public">Public</mat-option>
+      <mat-option value="private">Privé</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Annuler</button>
+  <button mat-raised-button color="accent" (click)="createProject()">Créer</button>
+  
+
+
+  
+</mat-dialog-actions>

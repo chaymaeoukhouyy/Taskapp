@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <!-- Titre spécifique -->
+  <span class="nav-title">Task Management</span>
+
+  <!-- Actions -->
+  <div class="action-group">
+    <!-- Barre de recherche  -->
+    <div class="custom-search-bar">
+      <mat-icon>search</mat-icon>
+      <input
+        type="text"
+        placeholder="Search"
+        [(ngModel)]="searchQuery"
+        (input)="onSearchChange()" />
+    </div>
+ 
+    <!-- Bouton "Créer" 
+    <button mat-raised-button color="accent" (click)="onCreateTask()">Créer</button> -->
+    <button mat-icon-button (click)="toggleNotifications()">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <!-- Icône de profil -->
+    <button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>   
+
+<!-- Liste des résultats filtrés -->
+<div *ngIf="filteredProjects.length > 0" class="search-results">
+  <div
+    class="result-item"
+    *ngFor="let project of filteredProjects"
+    (click)="selectProject(project)"
+  >
+    <mat-icon>folder</mat-icon>
+    <span>{{ project.name }}</span>
+  </div>
+</div>
+
+<!-- Composant Notifications -->
+<app-notification *ngIf="showNotifications"></app-notification>
+         

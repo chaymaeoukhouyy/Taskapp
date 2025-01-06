@@ -1,0 +1,34 @@
+mat-dialog-title {
+    font-size: 20px; // Taille du titre de la boîte de dialogue
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  mat-form-field {
+    width: 100%; // Champs pleine largeur
+    font-family: 'Century Gothic', Arial, sans-serif;
+  
+    .mat-form-field-label {
+      color: #6a6a6a; // Couleur des labels par défaut
+      font-size: 14px;
+    }
+  
+    .mat-form-field-label.mat-focused {
+      color: #000000; // Couleur quand le champ est en focus (exemple rose)
+    }
+  
+    input {
+      font-size: 14px;
+      font-family: 'Century Gothic', Arial, sans-serif;
+    }
+  }
+  
+  mat-dialog-actions {
+    justify-content: flex-end; // Aligner les actions à droite
+    font-family: 'Century Gothic', Arial, sans-serif;
+  
+    button {
+      font-weight: bold;
+    }
+  }
+  

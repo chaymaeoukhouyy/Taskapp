@@ -1,7 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Century+Gothic:wght@400&display=swap');
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Century Gothic', Arial, sans-serif; }
 h1, h2, h3, h4, h5, h6, p, button, mat-card-title, mat-card-subtitle, mat-card-content {
     font-family: 'Century Gothic', Arial, sans-serif;
   }
+
+  body, html {
+    font-family: 'Century Gothic', Arial, sans-serif; // Police par défaut
+    font-size: 14px;
+  }
+  
+  mat-dialog-container {
+    font-family: 'Century Gothic', Arial, sans-serif; // Appliquer dans les dialogues aussi
+  }
+  

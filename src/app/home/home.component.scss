@@ -1,55 +1,189 @@
-/* home.component.scss */
-.home-page {
+/* Section des statistiques */
+.stats-section {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  .stat-card {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-  
-    .toolbar {
+    align-items: center;
+    width: 250px;
+    padding: 16px;
+    background-color: #fdf8f8;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .stat-content {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
+      gap: 16px;
     }
-  
-    .app-title {
-      font-size: 24px;
-      font-weight: bold;
+
+    .stat-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
       color: white;
+      font-size: 24px;
     }
-  
-    .spacer {
-      flex: 1;
+
+    .stat-details {
+      text-align: left;
+
+      h6 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      p {
+        margin: 0;
+        font-size: 14px;
+        color: #555;
+      }
     }
+  }
+}
+
+/* Division principale en deux colonnes */
+
+.main-content {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-top: 1px solid #ccc; /* Ligne entre les statistiques et le reste */
+
   
-    .board-container {
+
+  .projects-column {
+    flex: 1;
+    border-right: 1px solid #ccc; /* Ligne entre "Projects" et "Doughnut Chart" */
+    padding-right: 20px; /* Espacement pour ne pas coller à la ligne */
+
+
+    .projects-header {
       display: flex;
       justify-content: space-between;
-      padding: 20px;
-      overflow-x: auto;
+      align-items: center;
+      margin-bottom: 20px;
+
+      h3 {
+        font-size: 20px;
+        font-weight: bold;
+        font-family: 'Century gothic';
+
+      }
+
+      .add-project-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 40px;
+        background-color: #6200ea;
+        color: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+        &:hover {
+          background-color: #3700b3;
+          box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+          transform: scale(1.1);
+        }
+
+        &:active {
+          transform: scale(0.95);
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        mat-icon {
+          font-size: 24px;
+        }
+      }
     }
-  
-    .add-task-form {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 10;
-      width: 300px;
-    }
-  
-    mat-card {
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    }
-  
-    mat-card-header {
-      background-color: #f5f5f5;
-      padding-bottom: 0;
-    }
-  
-    mat-card-actions {
+
+    .projects-container {
       display: flex;
-      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 25px; /* Spacing between cards */
+      padding: 10px;
+      justify-content: flex-start; /* Align cards to the left */
+    }
+    
+  }
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    width: 250px; /* Fixed width for uniformity */
+    background-color: #f3f0f0; 
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.05); /* Slightly enlarge on hover */
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Darker shadow */
+    }
+  
+    h4 {
+      font-size: 18px;
+      color: #333333; /* Dark text for visibility */
+      margin-bottom: 10px;
+    }
+    
+  
+   
+    .project-progress {
+      align-self: flex-end; /* Align progress indicator to the right */
+  
     }
   }
   
+
+  .chart-column {
+    flex: 1;
+    display: flex;
+
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    
+    .chart-card {
+      padding: 20px;
+      box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+      background-color: #ffffff;
+
+      h3 {
+        font-size: 20px;
+        font-weight: bold;
+        font-family: 'Century gothic';
+      }
+
+      .time-select {
+        margin-bottom: 20px;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+    }
+  }
+
+}

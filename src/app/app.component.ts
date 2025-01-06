@@ -11,9 +11,9 @@ import { RouterModule } from '@angular/router'; // Pour le <router-outlet>
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   imports: [
-    CommonModule,       
+    CommonModule,
     RouterModule,       // Pour le routage avec <router-outlet>
-    NavbarComponent     // Pour rendre Navbar conditionnellement
+    NavbarComponent,    // Pour rendre Navbar conditionnellement
   ]
 })
 export class AppComponent {
@@ -25,8 +25,8 @@ export class AppComponent {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        // Cache le Navbar sur les pages de login et sign-up
-        const hiddenNavbarRoutes = ['/login', '/sign-up','/reset-password'];
+        // Routes où le Navbar global doit être caché
+        const hiddenNavbarRoutes = ['/login', '/sign-up', '/reset-password', '/home'];
         this.showNavbar = !hiddenNavbarRoutes.includes(event.urlAfterRedirects);
       });
   }

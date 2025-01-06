@@ -1,14 +1,55 @@
-<mat-card>
-    <mat-card-header>
-      <mat-card-title>Ajouter une tâche</mat-card-title>
-    </mat-card-header>
-  
-    <mat-card-content>
-      <input matInput [(ngModel)]="newTaskTitle" placeholder="Titre de la tâche" />
-    </mat-card-content>
-  
-    <mat-card-actions>
-      <button mat-button (click)="addTask()">Ajouter</button>
-    </mat-card-actions>
+<app-home-navbar
+  [projects]="projects"
+  (projectSelected)="onProjectSelected($event)"
+  (searchQueryChanged)="onSearch($event)"
+></app-home-navbar>
+<!-- Section des statistiques -->
+<div class="stats-section">
+  <mat-card *ngFor="let stat of stats" class="stat-card">
+    <div class="stat-content">
+      <div class="stat-icon" [style.background-color]="stat.color">
+        <mat-icon>{{ stat.icon }}</mat-icon>
+      </div>
+      <div class="stat-details">
+        <h6>{{ stat.count }} {{ stat.title }}</h6>
+        <p>{{ stat.description }}</p>
+      </div>
+    </div>
   </mat-card>
+</div>
+
+<!-- Division en deux colonnes en dessous -->
+<div class="main-content">
+  <!-- Colonne gauche : Projets -->
+  <div class="projects-column">
+    <div class="projects-header">
+      <h3>Projects</h3>
+      <button mat-fab color="primary" (click)="openCreateProjectDialog()" class="add-project-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="projects-container">
+      <div class="project-card" *ngFor="let project of projects" (click)="navigateToBoard(project)">
+        <div class="project-info">
+          <h4>{{ project.name }}</h4>
+          <span class="project-badge">{{ project.badge }}</span>
+        </div>
+        <div class="project-progress">
+          <div class="progress-circle" [style.--progress]="project.progress">
+            <span>{{ project.progress }}%</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Colonne droite : Graphique -->
+  <div class="chart-column">
+    <mat-card class="chart-card">
+      <canvas #tasksProgressChart style="width: 300px; height: 300px;"></canvas>
+    </mat-card>
+    
+  </div>
   
+</div>
