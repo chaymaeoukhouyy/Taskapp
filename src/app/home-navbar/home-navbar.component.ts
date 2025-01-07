@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateProjectDialogComponent } from '../create-project-dialog/create-project-dialog.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { CommonModule } from '@angular/common'; // Ajoutez cet import
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -24,6 +25,7 @@ import { CommonModule } from '@angular/common'; // Ajoutez cet import
     MatInputModule,
     FormsModule,
     NotificationsComponent,
+    RouterModule
   ],
 })
 export class HomeNavbarComponent {

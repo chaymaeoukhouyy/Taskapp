@@ -1,0 +1,126 @@
+.user-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+  
+    .profile-card {
+      background: white;
+      padding: 80px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 800px;
+      
+      display: flex;
+      flex-direction: column;
+      position: relative; /* Ajout pour positionner l'image */
+  
+      .profile-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+  
+        .profile-icon {
+          font-size: 25px;
+          color: #3f51b5;
+          margin-right: 10px;
+        }
+  
+        h2 {
+          margin: 0;
+          font-size: 24px;
+          font-weight: bold;
+          font-family: 'century gothic';
+        }
+      }
+  
+      .form-fields {
+        display: flex;
+        gap: 20px;
+  
+        .form-left,
+        .form-right {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+  
+          .change-password-btn {
+            align-self: flex-start;
+          }
+        }
+      }
+  
+      .profile-picture {
+        position: absolute; /* Positionnement absolu pour placer en haut à droite */
+        top: 10px; /* Distance par rapport au haut */
+        right: 10px; /* Distance par rapport à droite */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        .avatar {
+          width: 110px;
+          height: 110px;
+          background-color: #ffffff;
+          border-radius: 50%;
+          object-fit: cover; /* Ajustement de l'image */
+          border: 1px solid #e0e0e0; /* Bordure légère */
+        }
+  
+        .edit-icon {
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+          background: white;
+          border-radius: 50%;
+          padding: 5px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+  
+      .save-btn-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+  
+        button {
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .password-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    .change-password-btn {
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
+    display: block; 
+    font-family: 'century gothic';
+    }
+  }
+  
+  .save-btn-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+ .buttonsave{
+    font-family: 'century gothic';
+
+}
+  
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      visibility: visible !important; /* Assurez-vous que le bouton est visible */
+
+    }
+  }
+  

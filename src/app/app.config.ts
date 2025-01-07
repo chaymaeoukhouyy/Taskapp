@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon'; // Ajoutez ceci
 
 // Import des modules de formulaires
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,6 +33,6 @@ export const appConfig: ApplicationConfig = {
       DragDropModule,
       FormsModule,
       ReactiveFormsModule
-    ),
+    ), provideAnimationsAsync(),
   ],
 };
